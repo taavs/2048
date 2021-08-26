@@ -29,7 +29,7 @@ class Board {
         }
     }
 
-    //A board is represented a matrix 
+    //A board is represented by a matrix 
     setUpBlankBoard() {
         for(let j = 1; j<= this.rows; j++) {
             let squaresInRow = new Array(this.columns).fill(0);
