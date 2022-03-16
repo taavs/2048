@@ -3,7 +3,7 @@ class Board {
     constructor(rows, columns){
         this.rows    = rows;
         this.columns = columns;
-        this.board   = [];
+        this.board   = {};
         this.setUpBlankBoard();
         this.printBoard();
     }
@@ -15,12 +15,13 @@ class Board {
     }
 
     generateHtmlBoard() {
+        this.board.map(square => {
+          row = this.createElementWithClass("div", "row");
+
+        })
+
+
         for (let i=1; i<=this.rows; i++) {
-            let row     = this.createElementWithClass("div", "row");
-
-            document.getElementById('gameboard-wrap').appendChild(row);
-
-
             for(let j=1; j <= this.columns; j++) {
                 let square = this.createElementWithClass("div", "square")
                 row.appendChild(square)
@@ -31,11 +32,17 @@ class Board {
 
     //A board is represented by a matrix 
     setUpBlankBoard() {
-        for(let j = 1; j<= this.rows; j++) {
-            let squaresInRow = new Array(this.columns).fill(0);
+      for(let j = 0; j < this.rows; j++) {
+        //Here we are going to create 4 letters. A, B, C, D
+        let gridPositionX = String.fromCharCode(97 + j)
 
-            this.board.push(squaresInRow);
+        //Here we are going to add the depth to the lettes (A1, A2, A3, A4);
+        for(let y = 1; y <= this.columns; y++) {
+          let gridPositionY = y;
+            
+          this.board[gridPositionX + gridPositionY] = 0;
         }
+      }
     }
 
     /** 
